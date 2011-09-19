@@ -4,21 +4,10 @@ CELL_SIZE_PX=15;
 
 function createTable(height, width) {
   var space = document.getElementById("space");
-  var row = space.insertRow(-1);
-  for (var j = 0; j < width; ++j) {
-      var cell = row.insertCell(j);
-      cell.style.width="15px";
-      cell.style.height="15px";
-      cell.innerHTML = "_";
-  }
   for (var i = 0; i < height; ++i) {
-    row = space.insertRow(-1);
-    var cell = row.insertCell(0);
-    cell.style.width="15px";
-    cell.style.height="15px";
-    cell.innerHTML = "|";
-    for (var j = 0; j < width; ++j) {
-      cell = row.insertCell(j + 1);
+    var row = space.insertRow(-1);
+for (var j = 0; j < width; ++j) {
+      var cell = row.insertCell(j);
       cell.style.width="15px";
       cell.style.height="15px";
     }
@@ -106,12 +95,12 @@ function displaySpace(changed, oldSpace, newSpace, height, width) {
     var i = changed[k][0];
     var j = changed[k][1];
     if (oldSpace[i][j] != newSpace[i][j]) {
-      var row = table.rows[i + 1];
-      var cell = row.cells[j + 1];
+      var row = table.rows[i];
+      var cell = row.cells[j];
       if (newSpace[i][j] == 1) {
-        cell.innerHTML = "*";
+        cell.style.background="gray";
       } else {
-        cell.innerHTML = "";
+        cell.style.background="white";
       }
     }
   }

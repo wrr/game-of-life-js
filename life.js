@@ -6,10 +6,10 @@ function createTable(height, width) {
   var space = document.getElementById("space");
   for (var i = 0; i < height; ++i) {
     var row = space.insertRow(-1);
-for (var j = 0; j < width; ++j) {
+    for (var j = 0; j < width; ++j) {
       var cell = row.insertCell(j);
-      cell.style.width="15px";
-      cell.style.height="15px";
+      cell.style.width = (CELL_SIZE_PX - 1) + "px";
+      cell.style.height = (CELL_SIZE_PX - 1) + "px";
     }
   }
 }

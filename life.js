@@ -167,6 +167,9 @@
     evolveSpace(space, evolvedSpace, canChange, addedToNewCanChange);
   }
 
-  main();
-
+  if(window.attachEvent) {
+    window.attachEvent('onload', main);
+  } else {
+    window.onload = main;
+  }
 }());

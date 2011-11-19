@@ -144,30 +144,33 @@
   }
 
   function main() {
-    var width, height, space, evolvedSpace, addedToNewCanChange, canChange, i, j;
+    var width, height, space, emptySpace, addedToNewCanChange, canChange, i, j;
     width = Math.floor(getWindowWidth() / CELL_SIZE_PX) - 1;
     height = Math.floor(getWindowHeight() / CELL_SIZE_PX) - 1;
     createTable(height, width);
     // 2D array with nth generation of the space.
     space = create2dArray(height, width);
     randomizeSpace(space, height, width);
-    // 2D array with (n + 1)th generation of the space.
-    evolvedSpace = create2dArray(height, width);
+    // 2D array to hold (n + 1)th generation of the space.
+    emptySpace = create2dArray(height, width);
     // Which cells can change in the next generation (cells not in
     // the array will for sure stay the same).
     canChange = [];
-    for (i = 1; i < height - 1; i += 1) {
-      for (j = 1; j < width - 1; j += 1) {
-        canChange.push([i, j]);
-      }
-    }
     // 2D array to quickly determine if a cell is already added to
     // canChange array.
     addedToNewCanChange = create2dArray(height, width);
-    evolveSpace(space, evolvedSpace, canChange, addedToNewCanChange);
+    for (i = 1; i < height - 1; i += 1) {
+      for (j = 1; j < width - 1; j += 1) {
+        canChange.push([i, j]);
+        addedToNewCanChange[i][j] = false;
+        emptySpace[i][j] = 0;
+      }
+    }
+    displaySpace(canChange, emptySpace, space);
+    evolveSpace(space, emptySpace, canChange, addedToNewCanChange);
   }
 
-  if(window.attachEvent) {
+  if (window.attachEvent) {
     window.attachEvent('onload', main);
   } else {
     window.onload = main;

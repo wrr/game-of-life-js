@@ -60,7 +60,8 @@
     }
   }
 
-  function addNeighborhoodToNewCanChange(row, col, newCanChange, addedToNewCanChange) {
+  function addNeighborhoodToNewCanChange(row, col,
+                                         newCanChange, addedToNewCanChange) {
     var i, j;
     for (i = -1; i <= 1; i += 1) {
       for (j = -1; j <= 1; j += 1) {
